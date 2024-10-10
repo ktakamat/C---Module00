@@ -1,18 +1,46 @@
 #include "Contact.hpp"
 
+void	InputError(void)
+{
+	if (std::cin.fail() | std::cin.bad())
+	{
+		std::cin.clear();
+		std::cin.ignore(255, '\n');
+		std::cout << "wrong input" << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
+}
+
 void	Contact::AddContact(void)
 {
-	std::cout << "His(Her) first name is..." << std::endl;
-	std::cin >> this->first_name;
-	std::cout << "His(Her) last name is..." << std::endl;
-	std::cin >> this->last_name;
-	std::cout << "His(Her) nick name is..." << std::endl;
-	std::cin >> this->nick_name;
-	std::cout << "His(Her) phone number is..." << std::endl;
-	std::cin >> this->phone_number;
-	std::cout << "His(Her) darkest secret is..." << std::endl;
-	std::cin >> this->secret;
-	std::cout << "Save his(her) Contact." << std::endl;
+	int	num = 0;
+
+	switch (num)
+	{				
+		case 0:
+			std::cout << "His(Her) first name is..." << std::endl;
+			std::getline(std::cin, this->first_name);
+			InputError();
+		case 1:
+			std::cout << "His(Her) last name is..." << std::endl;
+			std::getline(std::cin, this->last_name);
+			InputError();
+		case 2:
+			std::cout << "His(Her) nick name is..." << std::endl;
+			std::getline(std::cin, this->nick_name);
+			InputError();
+		case 3:
+			std::cout << "His(Her) phone number is..." << std::endl;
+			std::getline(std::cin, this->phone_number);
+			InputError();
+		case 4:
+			std::cout << "His(Her) darkest secret is..." << std::endl;
+			std::getline(std::cin, this->secret);
+			InputError();
+		case 5:
+			std::cout << "Save his(her) Contact." << std::endl;
+		num++;
+	}
 }
 
 std::string	Contact::getShortStr(std::string str)

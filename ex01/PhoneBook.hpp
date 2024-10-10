@@ -2,6 +2,7 @@
 # define PHONEBOOK_HPP
 
 #include "Contact.hpp"
+#include <climits>
 
 class PhoneBook
 {
@@ -10,7 +11,7 @@ class PhoneBook
 		int	index;
 
 	public:
-		PhoneBook() : index(0) {}
+		PhoneBook();
 		void	AddContact(void);
 		void	PrintContact(void);
 };

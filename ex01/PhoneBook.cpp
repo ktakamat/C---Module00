@@ -1,5 +1,7 @@
 #include "PhoneBook.hpp"
 
+PhoneBook::PhoneBook() : index(0) {}
+
 void	PhoneBook::AddContact(void)
 {
 	this->contacts[index % 8].AddContact();
@@ -31,8 +33,8 @@ void	PhoneBook::PrintContact(void)
 		if (std::cin.fail())
 		{
 			std::cin.clear();
-			std::cin.ignore(255, '\n');
-			std::cout << "wrong intput" << std::endl;
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "wrong input" << std::endl;
 			return ;
 		}
 		number = number -1;
@@ -41,4 +43,5 @@ void	PhoneBook::PrintContact(void)
 		else
 			std::cout << "Out of range" << std::endl;
 	}
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }

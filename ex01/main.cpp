@@ -2,6 +2,7 @@
 #include <string>
 #include "PhoneBook.hpp"
 
+
 int	main(void)
 {
 	std::string	cmd;
@@ -10,7 +11,14 @@ int	main(void)
 	while (true)
 	{
 		std::cout << "please enter your command:(ADD,SEARCH,EXIT)"<<std::endl;
-		std::cin >> cmd;
+		std::getline(std::cin, cmd);
+		if (std::cin.fail() | std::cin.bad())
+		{
+			std::cin.clear();
+			std::cin.ignore(255, '\n');
+			std::cout << "wrong input" << std::endl;
+			std::exit(EXIT_FAILURE);
+		}
 		if (cmd == "ADD")
 		{
 			phonebook.AddContact();
